@@ -5265,7 +5265,7 @@ else if((UINT_PTR)wParam == TIMER_LOGROTATION) {  // log rotation
 				return 0 ;
 			}
 		}
-if( (GetKeyState(VK_MENU)&0x8000) && (wParam==VK_SPACE) ) { 
+if( (GetKeyState(VK_MENU)&0x8000) && (wParam==VK_SPACE) && conf_get_bool(conf, CONF_alt_space)) { 
 	PopUpSystemMenu( hwnd, 0 ) ;
 	return 0;
 }

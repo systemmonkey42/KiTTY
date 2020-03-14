@@ -435,7 +435,8 @@ void PopUpSystemMenu( HWND hwnd, int npos ) {
 	RECT rc ;
 	GetWindowRect( hwnd, &rc ) ;
 	HMENU m = GetSystemMenu( hwnd, FALSE) ;
-	TrackPopupMenu( m, 0, rc.left, rc.top, 0, hwnd, NULL) ;
+	LPARAM cmd = TrackPopupMenu( m, TPM_RETURNCMD, rc.left, rc.top, 0, hwnd, NULL) ;
+    if (cmd) PostMessage(hwnd, WM_SYSCOMMAND, cmd, 0);
 
 	if( npos>0 ) {
 	int nb = GetMenuItemCount(m), i;
